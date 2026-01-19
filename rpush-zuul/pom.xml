@@ -14,7 +14,6 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>rpush-zuul</name>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
