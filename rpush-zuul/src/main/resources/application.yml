@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: rpush-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: rpush-route
+          uri: lb://rpush-route
+          predicates:
+            - Path=/route/**
+          filters:
+            - StripPrefix=1
+
+        - id: rpush-server
+          uri: lb://rpush-server
+          predicates:
+            - Path=/server/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://rpush-eureka:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,metrics
+  metrics:
+    tags:
+      application: ${spring.application.name}

@@ -20,7 +20,7 @@ public interface RpushServerOnlineService {
 
     @ApiOperation(value = "登录")
     @PostMapping("/login")
-    ApiResult<RpushServerRegistrationDTO> login(@RequestBody LoginDTO loginParam);
+    
 
     @ApiOperation(value = "下线")
     @PostMapping("/offline")
