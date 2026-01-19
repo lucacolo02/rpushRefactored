@@ -160,8 +160,7 @@ public class RpushClient {
                 LOGGER.info("重连成功!!!");
                 reconnectExecutor.shutdown();
             } catch (Exception e) {
-                e.printStackTrace();
-                LOGGER.warn("重连服务端失败");
+                LOGGER.warn("重连服务端失败", e);
             }
         }, 0, 10, TimeUnit.SECONDS);
     }

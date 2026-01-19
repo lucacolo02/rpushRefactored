@@ -1,8 +1,12 @@
 package com.regent.rpush.common.protocol;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
 public class ProtocolUtil {
+private static final Logger log = LoggerFactory.getLogger(NomeClasse.class);
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
         MessageProto.MessageProtocol protocol = MessageProto.MessageProtocol.newBuilder()
