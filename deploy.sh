@@ -113,9 +113,9 @@ function start() {
 
   cd "${jarPath}" || exit
   local s
-  s="nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml > ${logPath}/${appName}.log 2>&1 &"
+  s="nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml > "
   echo "${s}"
-  nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml >${logPath}/${appName}.log 2>&1 &
+  nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml &
   progress 3
 
   PID=$(ps -ef | grep "${jarPath}/${jarName}" | egrep -v "grep|$$" | awk 'NR==1{print $2}')
