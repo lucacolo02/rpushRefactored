@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "rpush"
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          - "rpush-route:8080"
+          - "rpush-server:8080"
+          - "rpush-scheduler:8080"
+          - "rpush-zuul:8080"
+          - "rpush-api:8080"
+          - "rpush-client:8080"
+          - "rpush-dto:8080"
+          - "rpush-eureka:8080"
+          - "rpush-common:8080"

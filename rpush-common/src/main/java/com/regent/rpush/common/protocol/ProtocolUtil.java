@@ -1,8 +1,12 @@
 package com.regent.rpush.common.protocol;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
 public class ProtocolUtil {
+private static final Logger log = LoggerFactory.getLogger(ProtocolUtil.class);
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
         MessageProto.MessageProtocol protocol = MessageProto.MessageProtocol.newBuilder()
@@ -16,9 +20,10 @@ public class ProtocolUtil {
 
         MessageProto.MessageProtocol parseFrom = decode(encode);
 
-        System.out.println(parseFrom.getContent());
-        System.out.println(protocol.toString());
-        System.out.println(protocol.toString().equals(parseFrom.toString()));
+        log.info("Parsed content: {}", parseFrom.getContent());
+        log.info("Protocol: {}", protocol);
+        log.info("Protocol equals parsedFrom: {}", protocol.equals(parseFrom));
+
     }
 
     /**

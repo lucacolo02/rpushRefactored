@@ -113,9 +113,9 @@ function start() {
 
   cd "${jarPath}" || exit
   local s
-  s="nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml > ${logPath}/${appName}.log 2>&1 &"
+  s="nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml > "
   echo "${s}"
-  nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml >${logPath}/${appName}.log 2>&1 &
+  nohup ${java} -Xms256m -Xmx256m -Dfile.encoding=UTF-8 -Duser.timezone=GMT+08 -jar ${jarPath}/${jarName} --spring.config.location=${configPath}/application.yml &
   progress 3
 
   PID=$(ps -ef | grep "${jarPath}/${jarName}" | egrep -v "grep|$$" | awk 'NR==1{print $2}')
@@ -166,7 +166,6 @@ function main() {
 
     local jarPath=${basePath}                  # jar包路径 = 根路径
     local configPath=${jarPath}/yml/${appName} # 配置文件路径 = jar包路径 + yml + 服务名称
-    local logPath=${jarPath}/logs/             # 日志路径 + logs + 服务名称
     case "${operation}" in
     "init")
       # 初始化目录结构
