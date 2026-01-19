@@ -1,30 +1,25 @@
+
 server:
   port: 8080
 
 spring:
   application:
-    name: rpush-gateway
+    name: rpush-zuul
 
-  cloud:
-    gateway:
-      routes:
-        - id: rpush-route
-          uri: lb://rpush-route
-          predicates:
-            - Path=/route/**
-          filters:
-            - StripPrefix=1
-
-        - id: rpush-server
-          uri: lb://rpush-server
-          predicates:
-            - Path=/server/**
-          filters:
-            - StripPrefix=1
 eureka:
   client:
     serviceUrl:
       defaultZone: http://rpush-eureka:8761/eureka
+
+zuul:
+  routes:
+    rpush-route:
+      path: /route/**
+      serviceId: rpush-route
+    rpush-server:
+      path: /server/**
+      serviceId: rpush-server
+
 management:
   endpoints:
     web:
@@ -32,4 +27,4 @@ management:
         include: prometheus,metrics
   metrics:
     tags:
-      application: ${spring.application.name}
+      application: ${rpush-route}
