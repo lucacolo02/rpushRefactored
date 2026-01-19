@@ -166,7 +166,6 @@ function main() {
 
     local jarPath=${basePath}                  # jar包路径 = 根路径
     local configPath=${jarPath}/yml/${appName} # 配置文件路径 = jar包路径 + yml + 服务名称
-    local logPath=${jarPath}/logs/             # 日志路径 + logs + 服务名称
     case "${operation}" in
     "init")
       # 初始化目录结构
