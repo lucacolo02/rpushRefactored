@@ -27,4 +27,4 @@ management:
         include: prometheus,metrics
   metrics:
     tags:
-      application: ${rpush-route}
+      application: ${spring.application.name}
